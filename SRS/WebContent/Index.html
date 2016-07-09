@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学生选课</title>
+<link href="css/blue.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<style type="text/css">
+	body{
+	background-color:#0A0617;
+	background-image:url(images/1.jpg);
+	background-size:100%;
+	background-repeat : no-repeat;
+	}
+	body {
+		padding-top: 50px;
+	}
+	td{
+		padding-bottom:10px;
+		text-align:left;
+	}
+	.form-control{
+		margin-top:0px;
+	}
+	.input-group{
+		width:100%;
+	}
+	.glyphicon{
+		top:0;
+		margin:0 5px;
+	}
+	#scheduleList,#registeredList{
+		font-size:80%;
+	}
+</style>
+</head>
+<body>
+	<div class="container-fluid" >
+		<div class="row-fluid">
+			<div class="col-xs-12 col-md-12 col-lg-12" style="margin-top:50px;" >
+				<h2 style="color:#888">课程表</h2>
+				<form action="EnrollSectionServlet" method="post" name="form1" id="form1">
+					<div class="table-responsive">
+						<table class="table table-hover table-bordered" id="scheduleList" style="color:#888;font-size:18px;">
+							<tr>
+								<th></th>
+								<th>课程名称</th>
+								<th>任课老师</th>
+								<th>上课时间</th>
+								<th>上课教室</th>
+								<th>课程余量</th>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12" style="">
+				<button class="btn  " onclick="enroll();">添加<span class="glyphicon glyphicon-chevron-down" style="padding-top:3px"></span></button>
+				<button class="btn  " onclick="drop();"><span class="glyphicon glyphicon-chevron-up" style="padding-top:3px"></span>移除</button>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-6">
+				<h2 style="color:#888">已选课程</h2>
+				<form action="DropSectionServlet" method="post" name="form2" id="form2">
+					<div class="table-responsive">
+						<table class="table table-hover table-bordered" id="registeredList" style="color:#888;font-size:18px;">
+							<tr>
+								<th></th>
+								<th>课程名称</th>
+								<th>任课老师</th>
+								<th>上课时间</th>
+								<th>上课教室</th>
+								<th>课程余量</th>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/icheck.js"></script>
+<script src="js/common.js"></script>
+<script src="js/SRS.js"></script>
+</html>

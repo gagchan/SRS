@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户登录</title>
+<link href="css/blue.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<style type="text/css">
+	body{
+	
+	background-image:url(images/1.jpg);
+	background-size:100%;
+	background-repeat : no-repeat;
+	background-color:#0A0617;
+	}
+	td{
+		padding-bottom:10px;
+		text-align:left;
+	}
+	.form-control{
+		margin-top:0px;
+	}
+	.input-group{
+		width:300px;
+	}
+	.glyphicon{
+		top:0;
+	}
+</style>
+</head>
+<body>
+
+<div class="container-fluid" style="padding-left: 0;">
+
+		<div>
+			<div class="col-xs-12 col-md-12 col-lg-12" style="margin-top:200px">
+			<h2 style="color:#888;margin-top:80px;text-align:center;font-weight:bold">登录</h2>
+				<form name="myForm" method="post" action="LoginServlet">
+					<table align="center">
+						<tr>
+							<td>
+								<div class="input-group">
+									<input type="text" name="username" id="username" class="form-control" placeholder="输入ssn号" size="50" />
+									<span class="input-group-addon glyphicon glyphicon-user" aria-hidden="true" id="basic-addon1"></span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input-group">
+									<input type="password" name="password" id="password" placeholder="输入密码" class="form-control" size="50" />
+									<span class="input-group-addon glyphicon glyphicon-lock" aria-hidden="true" id="basic-addon1"></span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select name="role" id="role" class="selector form-control" style="width:242px;">
+									<option value="1">学生</option>
+									<option value="2">教师</option>
+									<option value="3">管理员</option>
+								</select></span>
+								<button type="button" style="height:34px;width:54px" class="btn glyphicon glyphicon-off" onclick="sub();"></button>
+							</td>
+						</tr>
+
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/icheck.js"></script>
+<script type="text/javascript">
+function sub(){
+	$(".checked").children("#auto").attr("checked","checked");
+	myForm.submit();
+}
+</script>
+</html>

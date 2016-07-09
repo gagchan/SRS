@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>课程管理</title>
+<link href="css/blue.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<style type="text/css">
+body{
+	background-image:url(images/1.jpg);
+	background-size:100%;
+	background-repeat : no-repeat;
+	background-color:#0A0617;
+	}
+	
+	td {
+		padding-bottom: 10px;
+		text-align: left;
+	}
+	
+	.form-control {
+		margin-top: 0px;
+	}
+	
+	.input-group {
+		width: 100%;
+	}
+	
+	#courseList>tr>td {
+		vertical-align: middle;
+	}
+	#sectionList,#studentList{
+		font-size:80%;
+	}
+	#sectionList>tr>td{
+		text-align:center;
+	}
+</style>
+</head>
+<body>
+
+<div class="panel-group" id="accordion" style="width:180px;position:absolute;top:145px;left:0px;" >
+  <div class="panel panel-default" >
+    <div class="panel-heading">
+      <h2 class="panel-title">
+      	<strong>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="font-size:22px">
+          	查看菜单	
+        </a>
+        </strong>
+      </h2>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body" style="background-color:#E8F2FE; padding-left:40px;">
+      <span class="glyphicon glyphicon-credit-card" style="margin-right:17px"></span>
+       <h5 style="display:inline-block"><strong ><a href="CourseIndex.html" style="color:#3e7e7e">课程列表</a></strong></h5>
+      </div>
+      
+      <div class="panel-body" style="background-color:#eee;padding-left:40px;">
+      <span class="glyphicon glyphicon-education" style="margin-right:17px"></span>
+        <h5 style="display:inline-block"><strong ><a href="ProfessorIndex.html" style="color:#3e7e7e">教师列表</a></strong></h5>
+      </div>
+
+    </div>
+  </div>
+ 
+ 
+</div>
+
+	<div style="position:absolute;left:250px;width:75%">
+
+	<h2 style="color:#888;margin-top:60px">课程管理</h2>
+	<div id="action">
+		<button id="checkAll" class="btn btn-default" onclick="checkAll();" style="background:#888;border:1px solid #888;color:#ccc">
+			<span class="glyphicon glyphicon-check" aria-hidden="true" ></span>全选
+		</button>
+		<button id="deleteCourse" class="btn btn-default"
+			onclick="deleteCourses();" style="background:#888;border:1px solid #888;color:#ccc">
+			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
+		</button>
+		<button class="btn btn-default" id="modal-858341" style="background:#888;border:1px solid #888;color:#ccc"
+			href='#modal-container-858341' role='button' data-toggle='modal'>
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+		</button>
+	</div>
+	
+	
+	
+	
+	<div class="table-responsive">
+		<table class="table table-hover" align="center" id="courseList" style="color:#888;font-size:18px;">
+			<tr>
+				<th></th>
+				<th>课程编号</th>
+				<th>课程名称</th>
+				<th>课程学分</th>
+				<th></th>
+			</tr>
+		</table>
+	</div>
+	<div class="modal fade" id="modal-container-858341" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">添加课程</h4>
+				</div>
+					<div class="modal-body">
+						<h4 align="center">基本信息</h4>
+						<hr />
+						<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-credit-card"></span>
+							<input type="text" name="courseNo" id="courseNo"
+								class="form-control" placeholder="课程编号" />
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-user"></span>
+							<input type="text" name="courseName" id="courseName"
+								class="form-control" placeholder="课程名称" />
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-education"></span>
+							<input type="text" name="credits" id="credits"
+								class="form-control" placeholder="课程学分" />
+						</div>
+						<p>先修课程:</p>
+						<select class="selector form-control" name="prerequisite" id="Prerequisites"></select>
+					</div>
+					<div class="modal-footer" id="submitItem">
+						<button type="button" class="btn" onclick="addCourse();" style="background:#888;border:1px solid #888;color:#ccc">提交</button>
+						<button type="button" class="btn" data-dismiss="modal" style="background:#888;border:1px solid #888;color:#ccc">
+							取消</button>
+					</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modal-container-858342" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width: 60%;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">班次列表</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid" style="padding-left: 0;">
+						<div class="row-fluid">
+							<div class="col-xs-12 col-md-6 col-lg-6">
+								<h4 align="center" id="cName"></h4>
+								<hr />
+								<div class="table-responsive">
+									<table class="table table-hover" id="sectionList">
+										<tr>
+											<th></th>
+											<th>任课教师</th>
+											<th>课程日期</th>
+											<th>课程时间</th>
+											<th>课程教室</th>
+											<th>课程余量</th>
+											<th></th>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-6 col-lg-6">
+								<h4 align="center">选课学生</h4>
+								<hr />
+								<div class="table-responsive">
+									<table class="table table-hover" id="studentList">
+										<tr>
+											<th>学生编号</th>
+											<th>学生姓名</th>
+											<th>学生专业</th>
+											<th>学生学位</th>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" id="submitItem">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/icheck.js"></script>
+<script src="js/common.js"></script>
+<script src="js/courseIndex.js"></script>
+</html>
